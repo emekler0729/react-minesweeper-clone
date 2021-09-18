@@ -9,9 +9,15 @@ const CLICK_TYPE = {
 const StyledTile = styled.div`
     height: 50px;
     width: 50px;
-    background: ${(props) => (props.revealed ? "brown" : "green")};
+    background: ${(props) => (props.revealed ? "brown" : "hsl(120, 100%, 25%)")};
     display: grid;
     place-items: center;
+    border: 1px solid black;
+    cursor: pointer;
+
+    &:hover {
+        background: ${(props) => (props.revealed ? "brown" : "hsl(120, 100%, 45%)")};
+    }
 `;
 
 const Flag = styled.span`
@@ -38,7 +44,9 @@ class Tile extends React.Component {
         event.preventDefault();
         switch (event.type) {
             case CLICK_TYPE.LEFT:
-                this.setState({ revealed: true });
+                this.setState((state) => {
+                    return state.flagged ? state : { revealed: true };
+                });
                 break;
             case CLICK_TYPE.RIGHT:
                 this.setState((state) => {

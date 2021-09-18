@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Tile from "./components/Tile";
+import Field from "./components/Field";
 
 const StyledApp = styled.div`
     height: 100vh;
@@ -10,7 +10,7 @@ const StyledApp = styled.div`
 const App = () => {
     return (
         <StyledApp>
-            <Tile></Tile>
+            <Field />
         </StyledApp>
     );
 };
